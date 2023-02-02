@@ -1,50 +1,44 @@
 package ru.ibs.tests;
 
-import net.bytebuddy.description.modifier.Visibility;
-import org.junit.After;
+
 import org.junit.Assert;
-import org.junit.Before;
+
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import project.properties.TestProperties;
+import ru.ibs.framework.managers.DriverManager;
 
-import java.util.concurrent.TimeUnit;
+import java.util.Properties;
 
 
-public class FirstAutotest {
+
+public class FirstAutotest extends BaseTests {
 
 
-    WebDriver driver;
-    WebDriverWait wait;
+    protected  DriverManager driverManager = DriverManager.getDriverManager();
+    protected Properties properties = TestProperties.getInstance().getProperties();
 
-    @Before
+    protected WebDriver driver = driverManager.getDriver();
 
-    public void before() {
+    protected WebDriverWait wait = new WebDriverWait(driverManager.getDriver(),20,2000);
 
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
 
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.get("http://training.appline.ru/user/login");
-        wait = new WebDriverWait(driver, 20, 2000);
 
-    }
 
 
     @Test
     public void test() {
         // Авторизация
         WebElement loginForm = driver.findElement(By.xpath("//form[@id='login-form']//fieldset"));
-        loginForm.findElement(By.xpath(".//input[@id='prependedInput']")).sendKeys("Taraskina Valeriya");
-        loginForm.findElement(By.xpath(".//input[@id='prependedInput2']")).sendKeys("testing");
+        loginForm.findElement(By.xpath(".//input[@id='prependedInput']")).sendKeys(properties.getProperty("LOGIN"));
+        loginForm.findElement(By.xpath(".//input[@id='prependedInput2']")).sendKeys(properties.getProperty("PASSWORD"));
         loginForm.findElement(By.xpath(".//button[@id='_submit']")).click();
 
         // Проверка наличия заголовка
@@ -153,11 +147,7 @@ public class FirstAutotest {
 
     }
 
-    @After
 
-    public void after() {
-        driver.quit();
-    }
 
     public void loadingEscape()     {
         WebElement loading = driver.findElement(By.xpath("//div[@class='loader-content']"));
