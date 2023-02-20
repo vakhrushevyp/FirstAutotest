@@ -2,18 +2,17 @@ package ru.ibs.tests;
 
 
 import org.junit.Assert;
-
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import project.properties.TestProperties;
 import ru.ibs.framework.managers.DriverManager;
+import ru.ibs.framework.pages.AuthPage;
 
 import java.util.Properties;
 
@@ -29,17 +28,15 @@ public class FirstAutotest extends BaseTests {
 
     protected WebDriverWait wait = new WebDriverWait(driverManager.getDriver(),20,2000);
 
-
-
+    AuthPage authPage = new AuthPage(driver);
 
 
     @Test
     public void test() {
         // Авторизация
-        WebElement loginForm = driver.findElement(By.xpath("//form[@id='login-form']//fieldset"));
-        loginForm.findElement(By.xpath(".//input[@id='prependedInput']")).sendKeys(properties.getProperty("LOGIN"));
-        loginForm.findElement(By.xpath(".//input[@id='prependedInput2']")).sendKeys(properties.getProperty("PASSWORD"));
-        loginForm.findElement(By.xpath(".//button[@id='_submit']")).click();
+
+        authPage.authentication();
+
 
         // Проверка наличия заголовка
         WebElement header = driver.findElement(By.xpath("//h1[@class='oro-subtitle']"));
@@ -136,8 +133,6 @@ public class FirstAutotest extends BaseTests {
 
 
 
-
-
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -146,7 +141,6 @@ public class FirstAutotest extends BaseTests {
 
 
     }
-
 
 
     public void loadingEscape()     {

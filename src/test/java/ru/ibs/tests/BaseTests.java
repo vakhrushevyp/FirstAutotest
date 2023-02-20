@@ -2,6 +2,9 @@ package ru.ibs.tests;
 
 import org.junit.After;
 import org.junit.Before;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import project.properties.TestProperties;
 import ru.ibs.framework.managers.DriverManager;
 
@@ -19,10 +22,15 @@ public class BaseTests {
             driverManager.getDriver().get(properties.getProperty("HOSTNAME"));
         }
 
+
+
+
         @After
                 public void after() {
             driverManager.closeDriver();
             }
+
+
 
 
 
