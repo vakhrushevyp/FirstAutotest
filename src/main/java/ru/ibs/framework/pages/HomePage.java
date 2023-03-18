@@ -1,5 +1,6 @@
 package ru.ibs.framework.pages;
 
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,20 +18,20 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//span[contains(text(),'Командировки')]")
     WebElement mainMenuCostsTrips;
 
-
+    @Step("Проверка соответствия заголовка '{header.getText()}'")
     public HomePage checkTitle() {
         wait.until(ExpectedConditions.visibilityOf(header));
         Assert.assertEquals("Текст заголовка не соответствует", "Панель быстрого запуска", header.getText());
         return pageManager.getHomePage();
 
     }
-
+    @Step("Выбираем в меню {mainMenuCosts}")
     public HomePage mainMenuCoast() {
         mainMenuCosts.click();
         return pageManager.getHomePage();
 
     }
-
+    @Step("Выбираем в меню {mainMenuCostsTrips}")
     public TripsPage mainMenuCostsTrips() {
         mainMenuCostsTrips.click();
         loadingEscape();

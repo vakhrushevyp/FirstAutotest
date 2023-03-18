@@ -1,6 +1,7 @@
 package ru.ibs.framework.pages;
 
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -17,7 +18,7 @@ public class AuthPage extends BasePage {
     @FindBy(xpath = "//button[@id='_submit']")
     WebElement enterBtn;
 
-
+    @Step ("Авторизация")
     public HomePage authentication() {
         login.sendKeys(properties.getProperty("LOGIN"));
         password.sendKeys(properties.getProperty("PASSWORD"));
