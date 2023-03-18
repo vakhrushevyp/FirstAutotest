@@ -66,82 +66,92 @@ public class TripCreatePage extends BasePage {
     public TripCreatePage checkTitle() {
         Assert.assertTrue("не отображается заголовок \"Создать командировку\" ",
                 title.isDisplayed());
+        loadingEscape();
         return this;
     }
 
 
-    public void businessUnit(String businessUnitValue) {
+    public TripCreatePage businessUnit(String businessUnitValue) {
         businessUnit.click();
         for (int i = 0; i < businessUnitList.stream().count(); i++) {
             if (businessUnitList.get(i).getText().equals(businessUnitValue)) {
                 businessUnitList.get(i).click();
+                return pageManager.getTripCreatePage();
+
             }
         }
         Assert.assertEquals("Ошибка при выборе подразделения", businessUnitValue, businessUnitText.getText());
+        return pageManager.getTripCreatePage();
     }
 
-    public void selectCompany(String companyName) {
+    public TripCreatePage selectCompany(String companyName) {
         selectCompany.click();
         selectCompanyOpen.click();
         selectCompanyInput.sendKeys(companyName);
         wait.until(ExpectedConditions.visibilityOf(selectCompanyMatch)).click();
-
         Assert.assertEquals("Организация заполнена неправильно", companyName, selectCompanyChosen.getText());
+        return pageManager.getTripCreatePage();
     }
 
     public TripCreatePage selectTasks(String task) {
         int i;
-        for (i = 0; i < tasks.stream().count(); i++) {
+        for (i = 0; i < tasks.size(); i++) {
             if (tasks.get(i).getText().contains(task)) {
                 tasksCheckbox.get(i).click();
                 break;
             }
-
+            return pageManager.getTripCreatePage();
         }
 
         Assert.assertTrue("Чекбокс \"Задачи\" не установлен напротив " + task, tasksCheckbox.get(i).isSelected());
-
-        return this;
+        return pageManager.getTripCreatePage();
 
     }
 
 
-    public void setDepartureCity(String departureCityValue) {
+    public TripCreatePage setDepartureCity(String departureCityValue) {
         departureCity.clear();
         departureCity.sendKeys(departureCityValue);
 
         Assert.assertEquals("Город выбытия заполнен неправильно",
                 departureCityValue, departureCity.getAttribute("value"));
+        return pageManager.getTripCreatePage();
     }
 
-    public void setArrivalCity(String arrivalCityValue) {
+    public TripCreatePage setArrivalCity(String arrivalCityValue) {
         arrivalCity.clear();
         arrivalCity.sendKeys(arrivalCityValue);
         Assert.assertEquals("Город прибытия заполнен неправильно",
                 arrivalCityValue, arrivalCity.getAttribute("value"));
+        return pageManager.getTripCreatePage();
     }
 
-    public void setDepartureDatePlan(String departureDatePlanValue) {
+    public TripCreatePage setDepartureDatePlan(String departureDatePlanValue) {
         departureDatePlan.clear();
         departureDatePlan.sendKeys(departureDatePlanValue);
         Assert.assertEquals("Планируемая дата выезда заполнена неправильно",
                 departureDatePlanValue, departureDatePlan.getAttribute("value"));
+        return pageManager.getTripCreatePage();
     }
 
-    public void setReturnDatePlan(String returnDatePlanValue) {
+    public TripCreatePage setReturnDatePlan(String returnDatePlanValue) {
         returnDatePlan.clear();
         returnDatePlan.sendKeys(returnDatePlanValue);
         new Actions(driverManager.getDriver()).sendKeys(Keys.TAB).perform();
         Assert.assertEquals("Планируемая дата отъезда заполнена неправильно",
                 returnDatePlanValue, returnDatePlan.getAttribute("value"));
+        return pageManager.getTripCreatePage();
     }
 
-    public void saveCloseBtn() {
+    public TripCreatePage saveCloseBtn() {
         saveCloseBtn.click();
+        loadingEscape();
+        return pageManager.getTripCreatePage();
     }
 
-    public void errorTextEmployees() {
+    public TripCreatePage errorTextEmployees() {
         Assert.assertTrue("Текст ошибки по сотрудникам не отобразился", errorTextEmployees.isDisplayed());
+        return pageManager.getTripCreatePage();
     }
 
 

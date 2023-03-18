@@ -9,18 +9,19 @@ public class AuthPage extends BasePage {
 
 
     @FindBy(xpath = "//input[@id='prependedInput']")
-    private WebElement login;
+    WebElement login;
 
     @FindBy(xpath = "//input[@id='prependedInput2']")
-    private WebElement password;
+    WebElement password;
 
     @FindBy(xpath = "//button[@id='_submit']")
-    private WebElement enterBtn;
+    WebElement enterBtn;
 
 
-    public void authentication() {
+    public HomePage authentication() {
         login.sendKeys(properties.getProperty("LOGIN"));
         password.sendKeys(properties.getProperty("PASSWORD"));
         enterBtn.click();
+        return pageManager.getHomePage();
     }
 }

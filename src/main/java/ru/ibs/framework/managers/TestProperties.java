@@ -1,4 +1,4 @@
-package project.properties;
+package ru.ibs.framework.managers;
 
 
 import java.io.FileInputStream;
@@ -12,10 +12,9 @@ public class TestProperties {
 
     private TestProperties(){
         try {
-            properties.load(new FileInputStream("environment.properties"));
+            properties.load(new FileInputStream("src/main/resources/application.properties"));
         } catch (IOException e)  {
             e.printStackTrace();
-
         }
     }
 
@@ -27,6 +26,8 @@ public class TestProperties {
         return instance;
     }
 
-    public Properties getProperties () {return properties;}
+    public Properties getProperties () {
+        return properties;
+    }
 
 }

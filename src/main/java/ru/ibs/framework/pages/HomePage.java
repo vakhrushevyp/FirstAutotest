@@ -21,17 +21,20 @@ public class HomePage extends BasePage {
     public HomePage checkTitle() {
         wait.until(ExpectedConditions.visibilityOf(header));
         Assert.assertEquals("Текст заголовка не соответствует", "Панель быстрого запуска", header.getText());
-        return this;
+        return pageManager.getHomePage();
 
     }
 
-    public void mainMenuCoast() {
+    public HomePage mainMenuCoast() {
         mainMenuCosts.click();
+        return pageManager.getHomePage();
 
     }
 
-    public void mainMenuCostsTrips() {
+    public TripsPage mainMenuCostsTrips() {
         mainMenuCostsTrips.click();
+        loadingEscape();
+        return pageManager.getTripsPage();
     }
 
 }

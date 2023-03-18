@@ -9,8 +9,10 @@ public class TripsPage extends BasePage {
     WebElement createTrip;
 
 
-    public void createTrip() {
+    public TripCreatePage createTrip() {
         createTrip.click();
+        loadingEscape();
+        return pageManager.getTripCreatePage();
     }
 
 
