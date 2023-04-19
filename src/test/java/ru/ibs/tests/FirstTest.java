@@ -1,6 +1,7 @@
 package ru.ibs.tests;
 
 
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import ru.ibs.tests.Base.BaseTests;
 
@@ -8,6 +9,7 @@ import ru.ibs.tests.Base.BaseTests;
 public class FirstTest extends BaseTests {
 
     @Test
+    @DisplayName("Создание командировки")
     public void testExample() {
 
         pageManager.getAuthPage()
@@ -25,16 +27,7 @@ public class FirstTest extends BaseTests {
                 .setDepartureDatePlan("15.04.2023")
                 .setReturnDatePlan("14.05.2023")
                 .saveCloseBtn()
-                .errorTextEmployees();
-
-
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-
+                .errorTextEmployees("Список командируемых сотрудниковвв не может быть пустым");
     }
 
 

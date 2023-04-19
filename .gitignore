@@ -1,6 +1,7 @@
 # Folders ignore
 .idea
 target
+.allure
 
 # Files ignore
 *.iml

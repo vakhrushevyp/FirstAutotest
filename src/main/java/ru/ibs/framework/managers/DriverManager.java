@@ -37,10 +37,9 @@ public class DriverManager {
         System.setProperty(properties.getProperty("WEB_DRIVER"), properties.getProperty("WEB_DRIVER_PATH"));
         driver = new ChromeDriver();
 
-
     }
 
-    public  void closeDriver() {
+    public  void quitDriver() {
         driver.quit();
     }
 }

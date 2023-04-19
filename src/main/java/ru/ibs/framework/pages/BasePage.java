@@ -1,5 +1,6 @@
 package ru.ibs.framework.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -17,6 +18,7 @@ public class BasePage {
     protected final DriverManager driverManager = DriverManager.getDriverManager();
     protected WebDriverWait wait = new WebDriverWait(driverManager.getDriver(), 20, 2000);
     protected PageManager pageManager = PageManager.getPageManager();
+    protected JavascriptExecutor js = (JavascriptExecutor) driverManager.getDriver();
 
     @FindBy(xpath = "//div[@class='loader-content']")
     WebElement loadingEscape;
@@ -29,6 +31,11 @@ public class BasePage {
     public void loadingEscape() {
         wait.until(ExpectedConditions.invisibilityOf(loadingEscape));
 
+    }
+
+    protected WebElement scrollToElementJs(WebElement element) {
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+        return element;
     }
 
 

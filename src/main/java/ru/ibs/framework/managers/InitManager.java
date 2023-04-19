@@ -15,9 +15,8 @@ public class InitManager {
 
     }
 
-    public static void closeFramework() {
-        driverManager.closeDriver();
-
+    public static void quitFramework() {
+        driverManager.quitDriver();
     }
 
 

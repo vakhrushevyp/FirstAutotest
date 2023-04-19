@@ -1,6 +1,8 @@
 package ru.ibs.tests.Base;
 
+
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import ru.ibs.framework.managers.InitManager;
@@ -18,19 +20,20 @@ public class BaseTests {
     protected PageManager pageManager = PageManager.getPageManager();
 
     @BeforeClass
-    public static void beforeClass(){
+    public static void beforeAll(){
         InitManager.initFramework();
     }
 
 
     @Before
-    public void before() {
+    public void beforeEach() {
         driverManager.getDriver().get(properties.getProperty("HOSTNAME"));
     }
 
-    @After
-    public void after() {
-        InitManager.closeFramework();
+
+    @AfterClass
+    public static void afterAll() {
+        InitManager.quitFramework();
     }
 
 

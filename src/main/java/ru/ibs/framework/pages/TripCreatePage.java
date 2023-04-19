@@ -13,6 +13,8 @@ import java.util.List;
 
 public class TripCreatePage extends BasePage {
 
+
+
     @FindBy(xpath = "//h1[contains(text(),'Создать командировку')]")
     WebElement title;
 
@@ -140,25 +142,38 @@ public class TripCreatePage extends BasePage {
         return pageManager.getTripCreatePage();
     }
 
+    @Step ("Заполняем дату отъезда")
     public TripCreatePage setReturnDatePlan(String returnDatePlanValue) {
         returnDatePlan.clear();
         returnDatePlan.sendKeys(returnDatePlanValue);
         new Actions(driverManager.getDriver()).sendKeys(Keys.TAB).perform();
         Assert.assertEquals("Планируемая дата отъезда заполнена неправильно",
                 returnDatePlanValue, returnDatePlan.getAttribute("value"));
-        return pageManager.getTripCreatePage();
+        return this;
     }
 
+    @Step ("Нажимаем сохранить и закрыть")
     public TripCreatePage saveCloseBtn() {
         saveCloseBtn.click();
         loadingEscape();
-        return pageManager.getTripCreatePage();
+        return this;
     }
 
-    public TripCreatePage errorTextEmployees() {
-        Assert.assertTrue("Текст ошибки по сотрудникам не отобразился", errorTextEmployees.isDisplayed());
-        return pageManager.getTripCreatePage();
+
+    @Step ("Проверка текста ошибки у незаполненных полей")
+    public TripCreatePage errorTextEmployees(String textErrorMessage) {
+        loadingEscape();
+       scrollToElementJs(errorTextEmployees);
+        wait.until(ExpectedConditions.visibilityOf(errorTextEmployees));
+     Assert.assertEquals("Текст ошибки по сотрудникам не соответствует",
+             textErrorMessage, errorTextEmployees.getText());
+
+        return this;
+
     }
+
+
+
 
 
 }
