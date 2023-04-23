@@ -2,7 +2,9 @@ package ru.ibs.framework.pages;
 
 
 import io.qameta.allure.Step;
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -68,8 +70,7 @@ public class TripCreatePage extends BasePage {
 
     @Step("Проверяем соответствие заголовка страницы {title}")
     public TripCreatePage checkTitle() {
-        Assert.assertTrue("не отображается заголовок \"Создать командировку\" ",
-                title.isDisplayed());
+        assertTrue(title.isDisplayed(), "не отображается заголовок \"Создать командировку\" ");
         loadingEscape();
         return this;
     }
@@ -84,7 +85,7 @@ public class TripCreatePage extends BasePage {
 
             }
         }
-        Assert.assertEquals("Ошибка при выборе подразделения", businessUnitValue, businessUnitText.getText());
+        assertEquals("Ошибка при выборе подразделения", businessUnitValue, businessUnitText.getText());
         return pageManager.getTripCreatePage();
     }
 
@@ -94,7 +95,7 @@ public class TripCreatePage extends BasePage {
         selectCompanyOpen.click();
         selectCompanyInput.sendKeys(companyName);
         wait.until(ExpectedConditions.visibilityOf(selectCompanyMatch)).click();
-        Assert.assertEquals("Организация заполнена неправильно", companyName, selectCompanyChosen.getText());
+        assertEquals( companyName, selectCompanyChosen.getText(),"Организация заполнена неправильно");
         return pageManager.getTripCreatePage();
     }
 
@@ -109,7 +110,7 @@ public class TripCreatePage extends BasePage {
             return pageManager.getTripCreatePage();
         }
 
-        Assert.assertTrue("Чекбокс \"Задачи\" не установлен напротив " + task, tasksCheckbox.get(i).isSelected());
+        assertTrue( tasksCheckbox.get(i).isSelected(), "Чекбокс \"Задачи\" не установлен напротив " + task);
         return pageManager.getTripCreatePage();
 
     }
@@ -119,8 +120,8 @@ public class TripCreatePage extends BasePage {
         departureCity.clear();
         departureCity.sendKeys(departureCityValue);
 
-        Assert.assertEquals("Город выбытия заполнен неправильно",
-                departureCityValue, departureCity.getAttribute("value"));
+        assertEquals(
+                departureCityValue, departureCity.getAttribute("value"), "Город выбытия заполнен неправильно");
         return pageManager.getTripCreatePage();
     }
 
@@ -128,8 +129,8 @@ public class TripCreatePage extends BasePage {
     public TripCreatePage setArrivalCity(String arrivalCityValue) {
         arrivalCity.clear();
         arrivalCity.sendKeys(arrivalCityValue);
-        Assert.assertEquals("Город прибытия заполнен неправильно",
-                arrivalCityValue, arrivalCity.getAttribute("value"));
+        assertEquals(
+                arrivalCityValue, arrivalCity.getAttribute("value"),"Город прибытия заполнен неправильно");
         return pageManager.getTripCreatePage();
     }
 
@@ -137,8 +138,8 @@ public class TripCreatePage extends BasePage {
     public TripCreatePage setDepartureDatePlan(String departureDatePlanValue) {
         departureDatePlan.clear();
         departureDatePlan.sendKeys(departureDatePlanValue);
-        Assert.assertEquals("Планируемая дата выезда заполнена неправильно",
-                departureDatePlanValue, departureDatePlan.getAttribute("value"));
+        assertEquals(departureDatePlanValue, departureDatePlan.getAttribute("value"),
+                "Планируемая дата выезда заполнена неправильно");
         return pageManager.getTripCreatePage();
     }
 
@@ -147,8 +148,8 @@ public class TripCreatePage extends BasePage {
         returnDatePlan.clear();
         returnDatePlan.sendKeys(returnDatePlanValue);
         new Actions(driverManager.getDriver()).sendKeys(Keys.TAB).perform();
-        Assert.assertEquals("Планируемая дата отъезда заполнена неправильно",
-                returnDatePlanValue, returnDatePlan.getAttribute("value"));
+        assertEquals(returnDatePlanValue, returnDatePlan.getAttribute("value"),
+                "Планируемая дата отъезда заполнена неправильно");
         return this;
     }
 
@@ -165,8 +166,7 @@ public class TripCreatePage extends BasePage {
         loadingEscape();
        scrollToElementJs(errorTextEmployees);
         wait.until(ExpectedConditions.visibilityOf(errorTextEmployees));
-     Assert.assertEquals("Текст ошибки по сотрудникам не соответствует",
-             textErrorMessage, errorTextEmployees.getText());
+        assertEquals(textErrorMessage, errorTextEmployees.getText(), "Текст ошибки по сотрудникам не соответствует");
 
         return this;
 

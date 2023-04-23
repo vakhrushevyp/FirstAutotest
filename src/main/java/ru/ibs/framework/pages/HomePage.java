@@ -1,9 +1,10 @@
 package ru.ibs.framework.pages;
 
 import io.qameta.allure.Step;
-import org.junit.Assert;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
@@ -21,7 +22,8 @@ public class HomePage extends BasePage {
     @Step("Проверка соответствия заголовка '{header.getText()}'")
     public HomePage checkTitle() {
         wait.until(ExpectedConditions.visibilityOf(header));
-        Assert.assertEquals("Текст заголовка не соответствует", "Панель быстрого запуска", header.getText());
+
+        assertEquals( "Панель быстрого запуска", header.getText(),"Текст заголовка не соответствует");
         return pageManager.getHomePage();
 
     }

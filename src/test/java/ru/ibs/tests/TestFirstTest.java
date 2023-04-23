@@ -1,12 +1,14 @@
 package ru.ibs.tests;
 
 
-import io.qameta.allure.junit4.DisplayName;
-import org.junit.Test;
+
+import org.junit.jupiter.api.DisplayName;
+
+import org.junit.jupiter.api.Test;
 import ru.ibs.tests.Base.BaseTests;
 
 
-public class FirstTest extends BaseTests {
+public class TestFirstTest extends BaseTests {
 
     @Test
     @DisplayName("Создание командировки")
