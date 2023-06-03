@@ -86,6 +86,7 @@ public class TripCreatePage extends BasePage {
             }
         }
         assertEquals("Ошибка при выборе подразделения", businessUnitValue, businessUnitText.getText());
+
         return pageManager.getTripCreatePage();
     }
 
@@ -96,6 +97,7 @@ public class TripCreatePage extends BasePage {
         selectCompanyInput.sendKeys(companyName);
         wait.until(ExpectedConditions.visibilityOf(selectCompanyMatch)).click();
         assertEquals( companyName, selectCompanyChosen.getText(),"Организация заполнена неправильно");
+        takeScreenshot();
         return pageManager.getTripCreatePage();
     }
 
@@ -111,6 +113,7 @@ public class TripCreatePage extends BasePage {
         }
 
         assertTrue( tasksCheckbox.get(i).isSelected(), "Чекбокс \"Задачи\" не установлен напротив " + task);
+        takeScreenshot();
         return pageManager.getTripCreatePage();
 
     }
@@ -134,7 +137,7 @@ public class TripCreatePage extends BasePage {
         return pageManager.getTripCreatePage();
     }
 
-    @Step("Заполняем дату вылета '{departureDatePlanValue}'")
+    @Step("Заполняем дату вылета значением '{departureDatePlanValue}'")
     public TripCreatePage setDepartureDatePlan(String departureDatePlanValue) {
         departureDatePlan.clear();
         departureDatePlan.sendKeys(departureDatePlanValue);
@@ -143,20 +146,22 @@ public class TripCreatePage extends BasePage {
         return pageManager.getTripCreatePage();
     }
 
-    @Step ("Заполняем дату отъезда")
+    @Step ("Заполняем дату отъезда значением '{returnDatePlanValue}'")
     public TripCreatePage setReturnDatePlan(String returnDatePlanValue) {
         returnDatePlan.clear();
         returnDatePlan.sendKeys(returnDatePlanValue);
         new Actions(driverManager.getDriver()).sendKeys(Keys.TAB).perform();
         assertEquals(returnDatePlanValue, returnDatePlan.getAttribute("value"),
                 "Планируемая дата отъезда заполнена неправильно");
+        takeScreenshot();
         return this;
     }
 
-    @Step ("Нажимаем сохранить и закрыть")
+    @Step ("Нажимаем кнопку сохранить и закрыть")
     public TripCreatePage saveCloseBtn() {
         saveCloseBtn.click();
         loadingEscape();
+        takeScreenshot();
         return this;
     }
 
@@ -166,8 +171,8 @@ public class TripCreatePage extends BasePage {
         loadingEscape();
        scrollToElementJs(errorTextEmployees);
         wait.until(ExpectedConditions.visibilityOf(errorTextEmployees));
+        takeScreenshot();
         assertEquals(textErrorMessage, errorTextEmployees.getText(), "Текст ошибки по сотрудникам не соответствует");
-
         return this;
 
     }

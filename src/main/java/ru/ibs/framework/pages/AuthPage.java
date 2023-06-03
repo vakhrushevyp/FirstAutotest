@@ -23,6 +23,7 @@ public class AuthPage extends BasePage {
         login.sendKeys(properties.getProperty("LOGIN"));
         password.sendKeys(properties.getProperty("PASSWORD"));
         enterBtn.click();
+        takeScreenshot();
         return pageManager.getHomePage();
     }
 }

@@ -1,6 +1,10 @@
 package ru.ibs.framework.pages;
 
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -36,6 +40,11 @@ public class BasePage {
     protected WebElement scrollToElementJs(WebElement element) {
         js.executeScript("arguments[0].scrollIntoView(true);", element);
         return element;
+    }
+
+    @Attachment (value = "Скришот")
+    public byte[] takeScreenshot () {
+        return ((TakesScreenshot) driverManager.getDriver()).getScreenshotAs(OutputType.BYTES);
     }
 
 

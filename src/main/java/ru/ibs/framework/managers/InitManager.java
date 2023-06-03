@@ -10,7 +10,7 @@ public class InitManager {
     public static void initFramework() {
 
         driverManager.getDriver().manage().window().maximize();
-        driverManager.getDriver().manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+        driverManager.getDriver().manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
         driverManager.getDriver().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
     }

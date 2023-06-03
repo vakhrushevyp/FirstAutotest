@@ -29,7 +29,8 @@ public class TestFirstTest extends BaseTests {
                 .setDepartureDatePlan("15.04.2023")
                 .setReturnDatePlan("14.05.2023")
                 .saveCloseBtn()
-                .errorTextEmployees("Список командируемых сотрудниковвв не может быть пустым");
+                .errorTextEmployees("Список командируемых сотрудников не может быть пустым");
+
     }
 
 

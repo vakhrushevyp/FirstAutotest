@@ -19,7 +19,7 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//span[contains(text(),'Командировки')]")
     WebElement mainMenuCostsTrips;
 
-    @Step("Проверка соответствия заголовка '{header.getText()}'")
+    @Step("Проверка соответствия заголовка")
     public HomePage checkTitle() {
         wait.until(ExpectedConditions.visibilityOf(header));
 
@@ -27,16 +27,17 @@ public class HomePage extends BasePage {
         return pageManager.getHomePage();
 
     }
-    @Step("Выбираем в меню {mainMenuCosts}")
+    @Step("Выбираем в меню 'Расходы'")
     public HomePage mainMenuCoast() {
         mainMenuCosts.click();
         return pageManager.getHomePage();
 
     }
-    @Step("Выбираем в меню {mainMenuCostsTrips}")
+    @Step("Выбираем в меню 'Командировки'")
     public TripsPage mainMenuCostsTrips() {
         mainMenuCostsTrips.click();
         loadingEscape();
+        takeScreenshot();
         return pageManager.getTripsPage();
     }
 

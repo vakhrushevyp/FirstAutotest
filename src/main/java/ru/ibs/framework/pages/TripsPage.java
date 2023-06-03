@@ -9,10 +9,11 @@ public class TripsPage extends BasePage {
     @FindBy(xpath = "//a[@title='Создать командировку']")
     WebElement createTrip;
 
-    @Step("Нажимаем на кнопку {createTrip}")
+    @Step("Нажимаем на кнопку 'Создать командировку'")
     public TripCreatePage createTrip() {
         createTrip.click();
         loadingEscape();
+        takeScreenshot();
         return pageManager.getTripCreatePage();
     }
 

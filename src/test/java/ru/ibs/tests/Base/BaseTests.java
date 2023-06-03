@@ -3,6 +3,7 @@ package ru.ibs.tests.Base;
 
 
 
+import io.qameta.allure.Attachment;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,7 +32,6 @@ public class BaseTests {
     public void beforeEach() {
         driverManager.getDriver().get(properties.getProperty("HOSTNAME"));
     }
-
 
 
     @AfterAll
