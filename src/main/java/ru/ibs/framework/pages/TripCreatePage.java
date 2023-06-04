@@ -1,10 +1,11 @@
 package ru.ibs.framework.pages;
 
 
+
 import io.qameta.allure.Step;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -68,14 +69,14 @@ public class TripCreatePage extends BasePage {
     @FindBy(xpath = "//span[contains(text(),'Список командируемых сотрудников не может быть пустым')]")
     WebElement errorTextEmployees;
 
-    @Step("Проверяем соответствие заголовка страницы {title}")
+
     public TripCreatePage checkTitle() {
         assertTrue(title.isDisplayed(), "не отображается заголовок \"Создать командировку\" ");
         loadingEscape();
         return this;
     }
 
-    @Step("Выбираем подразделение '{businessUnitValue}'")
+
     public TripCreatePage businessUnit(String businessUnitValue) {
         businessUnit.click();
         for (int i = 0; i < businessUnitList.stream().count(); i++) {
@@ -90,7 +91,7 @@ public class TripCreatePage extends BasePage {
         return pageManager.getTripCreatePage();
     }
 
-    @Step("Выбираем компанию '{companyName}'")
+
     public TripCreatePage selectCompany(String companyName) {
         selectCompany.click();
         selectCompanyOpen.click();
@@ -101,7 +102,7 @@ public class TripCreatePage extends BasePage {
         return pageManager.getTripCreatePage();
     }
 
-    @Step("Заполняем задачу '{task}'")
+
     public TripCreatePage selectTasks(String task) {
         int i;
         for (i = 0; i < tasks.size(); i++) {
@@ -118,7 +119,7 @@ public class TripCreatePage extends BasePage {
 
     }
 
-    @Step("Заполняем город вылета '{departureCityValue}'")
+
     public TripCreatePage setDepartureCity(String departureCityValue) {
         departureCity.clear();
         departureCity.sendKeys(departureCityValue);
@@ -128,7 +129,7 @@ public class TripCreatePage extends BasePage {
         return pageManager.getTripCreatePage();
     }
 
-    @Step("Заполняем город прилета '{arrivalCityValue}'")
+
     public TripCreatePage setArrivalCity(String arrivalCityValue) {
         arrivalCity.clear();
         arrivalCity.sendKeys(arrivalCityValue);
@@ -137,7 +138,7 @@ public class TripCreatePage extends BasePage {
         return pageManager.getTripCreatePage();
     }
 
-    @Step("Заполняем дату вылета значением '{departureDatePlanValue}'")
+
     public TripCreatePage setDepartureDatePlan(String departureDatePlanValue) {
         departureDatePlan.clear();
         departureDatePlan.sendKeys(departureDatePlanValue);
@@ -146,7 +147,7 @@ public class TripCreatePage extends BasePage {
         return pageManager.getTripCreatePage();
     }
 
-    @Step ("Заполняем дату отъезда значением '{returnDatePlanValue}'")
+
     public TripCreatePage setReturnDatePlan(String returnDatePlanValue) {
         returnDatePlan.clear();
         returnDatePlan.sendKeys(returnDatePlanValue);
@@ -157,7 +158,7 @@ public class TripCreatePage extends BasePage {
         return this;
     }
 
-    @Step ("Нажимаем кнопку сохранить и закрыть")
+
     public TripCreatePage saveCloseBtn() {
         saveCloseBtn.click();
         loadingEscape();
@@ -166,7 +167,7 @@ public class TripCreatePage extends BasePage {
     }
 
 
-    @Step ("Проверка текста ошибки у незаполненных полей")
+
     public TripCreatePage errorTextEmployees(String textErrorMessage) {
         loadingEscape();
        scrollToElementJs(errorTextEmployees);

@@ -12,7 +12,7 @@ public class PageManager {
     private TripsPage tripsPage;
     private TripCreatePage tripCreatePage;
 
-    private PageManager() {
+    public PageManager() {
 
     }
 
