@@ -1,10 +1,8 @@
 package ru.ibs.framework.pages;
 
 
-
-import io.qameta.allure.Step;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
