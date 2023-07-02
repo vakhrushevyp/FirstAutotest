@@ -9,17 +9,17 @@ public class HomePageSteps {
     public PageManager pageManager = PageManager.getPageManager();
 
     @И("^Проверяем соответствие заголовка страницы HomePage$")
-    public void checkTitle(){
+    public void checkTitle() {
         pageManager.getHomePage().checkTitle();
     }
 
     @И("^Выбираем в меню 'Расходы'$")
-    public void mainMenuCoast(){
+    public void mainMenuCoast() {
         pageManager.getHomePage().mainMenuCoast();
     }
 
     @И("^Выбираем в меню 'Командировки'$")
-    public void mainMenuCostsTrips(){
+    public void mainMenuCostsTrips() {
         pageManager.getHomePage().mainMenuCostsTrips();
     }
 }

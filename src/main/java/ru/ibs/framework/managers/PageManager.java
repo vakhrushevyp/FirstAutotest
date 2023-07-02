@@ -1,6 +1,9 @@
 package ru.ibs.framework.managers;
 
-import ru.ibs.framework.pages.*;
+import ru.ibs.framework.pages.AuthPage;
+import ru.ibs.framework.pages.HomePage;
+import ru.ibs.framework.pages.TripCreatePage;
+import ru.ibs.framework.pages.TripsPage;
 
 public class PageManager {
 
@@ -22,7 +25,6 @@ public class PageManager {
         }
         return pageManager;
     }
-
 
 
     public AuthPage getAuthPage() {

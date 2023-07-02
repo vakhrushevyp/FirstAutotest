@@ -8,7 +8,7 @@ public class TripsPageSteps {
     public PageManager pageManager = PageManager.getPageManager();
 
     @И("^Нажимаем на кнопку 'Создать командировку'$")
-    public void createTrip(){
+    public void createTrip() {
         pageManager.getTripsPage().createTrip();
     }
 }

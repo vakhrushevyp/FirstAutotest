@@ -53,6 +53,7 @@
             <version>${junit.platform.version}</version>
         </dependency>
 
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -90,6 +91,14 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-cucumber5-jvm</artifactId>
             <version>2.20.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>2.20.0</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

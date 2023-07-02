@@ -1,9 +1,6 @@
 package ru.ibs.framework.pages;
 
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -12,8 +9,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
-public class TripCreatePage extends BasePage {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+public class TripCreatePage extends BasePage {
 
 
     @FindBy(xpath = "//h1[contains(text(),'Создать командировку')]")
@@ -95,7 +94,7 @@ public class TripCreatePage extends BasePage {
         selectCompanyOpen.click();
         selectCompanyInput.sendKeys(companyName);
         wait.until(ExpectedConditions.visibilityOf(selectCompanyMatch)).click();
-        assertEquals( companyName, selectCompanyChosen.getText(),"Организация заполнена неправильно");
+        assertEquals(companyName, selectCompanyChosen.getText(), "Организация заполнена неправильно");
         takeScreenshot();
         return pageManager.getTripCreatePage();
     }
@@ -111,7 +110,7 @@ public class TripCreatePage extends BasePage {
             return pageManager.getTripCreatePage();
         }
 
-        assertTrue( tasksCheckbox.get(i).isSelected(), "Чекбокс \"Задачи\" не установлен напротив " + task);
+        assertTrue(tasksCheckbox.get(i).isSelected(), "Чекбокс \"Задачи\" не установлен напротив " + task);
         takeScreenshot();
         return pageManager.getTripCreatePage();
 
@@ -132,7 +131,7 @@ public class TripCreatePage extends BasePage {
         arrivalCity.clear();
         arrivalCity.sendKeys(arrivalCityValue);
         assertEquals(
-                arrivalCityValue, arrivalCity.getAttribute("value"),"Город прибытия заполнен неправильно");
+                arrivalCityValue, arrivalCity.getAttribute("value"), "Город прибытия заполнен неправильно");
         return pageManager.getTripCreatePage();
     }
 
@@ -165,19 +164,15 @@ public class TripCreatePage extends BasePage {
     }
 
 
-
     public TripCreatePage errorTextEmployees(String textErrorMessage) {
         loadingEscape();
-       scrollToElementJs(errorTextEmployees);
+        scrollToElementJs(errorTextEmployees);
         wait.until(ExpectedConditions.visibilityOf(errorTextEmployees));
         takeScreenshot();
         assertEquals(textErrorMessage, errorTextEmployees.getText(), "Текст ошибки по сотрудникам не соответствует");
         return this;
 
     }
-
-
-
 
 
 }

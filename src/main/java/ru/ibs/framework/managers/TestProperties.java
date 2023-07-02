@@ -10,23 +10,23 @@ public class TestProperties {
 
     private static TestProperties instance = null;
 
-    private TestProperties(){
+    private TestProperties() {
         try {
             properties.load(new FileInputStream("src/main/resources/application.properties"));
-        } catch (IOException e)  {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-    public static TestProperties getInstance()  {
-        if (instance == null){
+    public static TestProperties getInstance() {
+        if (instance == null) {
             instance = new TestProperties();
         }
         return instance;
     }
 
-    public Properties getProperties () {
+    public Properties getProperties() {
         return properties;
     }
 

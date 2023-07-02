@@ -14,7 +14,7 @@ public class DriverManager {
     private static DriverManager INSTANCE = null;
 
 
-    private DriverManager(){
+    private DriverManager() {
 
     }
 
@@ -25,7 +25,7 @@ public class DriverManager {
         return INSTANCE;
     }
 
-    public  WebDriver getDriver() {
+    public WebDriver getDriver() {
         if (driver == null) {
             initDriver();
         }
@@ -39,7 +39,7 @@ public class DriverManager {
 
     }
 
-    public  void quitDriver() {
+    public void quitDriver() {
         driver.quit();
     }
 }

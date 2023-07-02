@@ -2,8 +2,9 @@ package ru.ibs.framework.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HomePage extends BasePage {
 
@@ -20,7 +21,7 @@ public class HomePage extends BasePage {
 
     public HomePage checkTitle() {
         wait.until(ExpectedConditions.visibilityOf(header));
-        assertEquals( "Панель быстрого запуска", header.getText(),"Текст заголовка не соответствует");
+        assertEquals("Панель быстрого запуска", header.getText(), "Текст заголовка не соответствует");
         return pageManager.getHomePage();
 
     }
